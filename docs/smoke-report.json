@@ -1,0 +1,60 @@
+{
+  "steps": [
+    {
+      "name": "library",
+      "file": "C:\\Users\\ryomen\\OneDrive\\Desktop\\Projects\\Project Launcher Electron\\updated\\.smoke\\reload\\library.png",
+      "ok": true
+    },
+    {
+      "name": "inspector",
+      "file": "C:\\Users\\ryomen\\OneDrive\\Desktop\\Projects\\Project Launcher Electron\\updated\\.smoke\\reload\\inspector.png",
+      "ok": true
+    },
+    {
+      "name": "palette",
+      "file": "C:\\Users\\ryomen\\OneDrive\\Desktop\\Projects\\Project Launcher Electron\\updated\\.smoke\\reload\\palette.png",
+      "ok": true
+    },
+    {
+      "name": "analytics",
+      "file": "C:\\Users\\ryomen\\OneDrive\\Desktop\\Projects\\Project Launcher Electron\\updated\\.smoke\\reload\\analytics.png",
+      "ok": true
+    },
+    {
+      "name": "activity",
+      "file": "C:\\Users\\ryomen\\OneDrive\\Desktop\\Projects\\Project Launcher Electron\\updated\\.smoke\\reload\\activity.png",
+      "ok": true
+    },
+    {
+      "name": "settings-appearance",
+      "file": "C:\\Users\\ryomen\\OneDrive\\Desktop\\Projects\\Project Launcher Electron\\updated\\.smoke\\reload\\settings-appearance.png",
+      "ok": true
+    },
+    {
+      "name": "settings-launch",
+      "file": "C:\\Users\\ryomen\\OneDrive\\Desktop\\Projects\\Project Launcher Electron\\updated\\.smoke\\reload\\settings-launch.png",
+      "ok": true
+    },
+    {
+      "name": "library-narrow",
+      "ok": true
+    }
+  ],
+  "errors": [],
+  "createdAt": "2026-11-03T21:34:28.528Z",
+  "launchTest": {
+    "addedId": "p_mw17hbj2xs3ii3",
+    "markerWritten": true,
+    "runningAfter": 0,
+    "ok": true
+  },
+  "probe": {
+    "cards": 18,
+    "title": "Library",
+    "nav": 4,
+    "settingsControls": 3,
+    "errors": 0,
+    "theme": "dark",
+    "accent": "#d97706"
+  }
+}

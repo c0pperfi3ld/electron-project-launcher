@@ -1,0 +1,105 @@
+{
+  "_readme": "Project Nexus v5 — schema + defaults. main.js deep-merges this over its inline DEFAULTS and only fills gaps, so existing configs are never reset.",
+  "version": 5,
+  "settings": {
+    "theme": "Carbon Black",
+    "themeCycle": [
+      "Carbon Black",
+      "Midnight Aurora",
+      "Cyberpunk Neon",
+      "Nordic Frost",
+      "Porcelain"
+    ],
+    "accent": {
+      "custom": false,
+      "hue": 258,
+      "saturation": 84,
+      "lightness": 68
+    },
+    "appearance": {
+      "opacity": 1,
+      "blur": 18,
+      "radius": 12,
+      "density": 46,
+      "fontScale": 0.94,
+      "sidebarWidth": 210,
+      "inspectorWidth": 336,
+      "noise": 10,
+      "glow": 45,
+      "animations": true,
+      "motion": 1,
+      "reduceMotion": false,
+      "sidebarCollapsed": false,
+      "showPaths": true,
+      "showHeat": true,
+      "showTags": true,
+      "showMeta": true,
+      "perfHud": false
+    },
+    "behavior": {
+      "confirmDelete": true,
+      "dblclickRun": true,
+      "hideOnClose": false,
+      "confirmQuit": false,
+      "alwaysOnTop": false,
+      "startMinimized": false,
+      "launchAtLogin": false,
+      "globalHotkeys": true,
+      "autoBackup": true,
+      "backupKeep": 6,
+      "autoSpecs": true,
+      "liveMetrics": true,
+      "metricsInterval": 1500,
+      "notifyOnLaunch": true,
+      "searchDebounce": 90,
+      "toastDuration": 3600
+    },
+    "launch": {
+      "terminal": false,
+      "debugConsole": false,
+      "killPrev": true,
+      "priority": "normal",
+      "delay": 0,
+      "env": []
+    },
+    "library": {
+      "view": "list",
+      "sort": "custom",
+      "sortDir": "asc",
+      "group": "none",
+      "typeFilter": "all",
+      "tagFilter": null
+    },
+    "cards": {
+      "_readme": "Card grid: launch-count heat accent (mode, thresholds, palette, style) and the compact layout controls.",
+      "heat": true,
+      "heatMode": "relative",
+      "heatMid": 34,
+      "heatHigh": 67,
+      "heatStyle": "spine",
+      "heatThickness": 3,
+      "heatIntensity": 85,
+      "palette": "traffic",
+      "heatCool": "#43d18a",
+      "heatWarm": "#f0b23a",
+      "heatHot": "#e5484d",
+      "density": "compact",
+      "minWidth": 178,
+      "gap": 6,
+      "showDesc": 1,
+      "showTags": true,
+      "showKind": true,
+      "runsChip": "count",
+      "meter": true,
+      "legend": true
+    },
+    "window": {
+      "width": 1240,
+      "height": 800,
+      "x": null,
+      "y": null,
+      "maximized": false
+    }
+  },
+  "projects": []
+}

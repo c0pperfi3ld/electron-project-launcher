@@ -1,0 +1,35 @@
+{
+  "name": "project-nexus-v5",
+  "version": "5.0.0",
+  "description": "Project Nexus v5 — granular, glassmorphic, performance-first Electron launcher",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "electron": "electron .",
+    "hidden": "electron . --hidden",
+    "smoke": "node scripts/smoke.js",
+    "build": "electron-builder --dir",
+    "pack": "electron-builder"
+  },
+  "keywords": ["launcher", "electron", "project-launcher", "granular", "glassmorphism"],
+  "author": "miraj",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^31.7.7",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.projectnexus.v5",
+    "productName": "Project Nexus v5",
+    "directories": { "output": "dist", "buildResources": "assets" },
+    "files": ["main.js", "preload.js", "renderer/**/*", "assets/**/*", "nexus.config.json", "package.json"],
+    "win": { "target": ["nsis", "portable"], "icon": "assets/app-icon.png" },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "Project Nexus v5"
+    }
+  }
+}

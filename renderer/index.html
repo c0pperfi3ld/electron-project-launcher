@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" data-mode="dark">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Nexus v5</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="ambient" aria-hidden="true">
+  <div class="ambient-glow"></div>
+  <div class="ambient-glow g2"></div>
+  <div class="ambient-grain"></div>
+</div>
+
+<header class="titlebar">
+  <div class="tb-brand">
+    <span class="mark" aria-hidden="true">◆</span>
+    <span class="tb-word">PROJECT <b>NEXUS</b></span>
+    <span class="ver">v5</span>
+  </div>
+  <div class="tb-context"><span class="dot"></span><span id="tbContext">Library</span></div>
+  <div class="tb-right">
+    <button class="tb-icon" data-act="perf" title="Performance HUD  (Ctrl+Shift+P)" aria-label="Performance HUD">◔</button>
+    <button class="palette-trigger" data-act="palette" title="Command palette (Ctrl+K)">
+      <span class="pt-ic">⌘</span><span class="pt-label">Search or run a command</span><kbd>Ctrl K</kbd>
+    </button>
+    <div class="win-controls">
+      <button class="win-btn" data-act="win-min" title="Minimize" aria-label="Minimize"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M1 5h8" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      <button class="win-btn" data-act="win-max" title="Maximize" aria-label="Maximize"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="1.3" y="1.3" width="7.4" height="7.4" rx="1" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      <button class="win-btn close" data-act="win-close" title="Close" aria-label="Close"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M1.5 1.5l7 7M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.2"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="app" id="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand-block">
+      <div class="logo-orb"><span>◆</span></div>
+      <div class="brand-copy">
+        <div class="brand-name">NEXUS</div>
+        <div class="brand-sub">launcher studio</div>
+      </div>
+      <button class="icon-btn collapse" data-act="sidebar" title="Collapse sidebar (Ctrl+B)">⟨</button>
+    </div>
+
+    <nav class="nav" aria-label="Primary">
+      <button class="nav-item active" data-tab="library"><span class="nav-ic" data-ic="library"></span><span class="nav-lbl">Library</span><span class="nav-count" id="navLibCount">0</span></button>
+      <button class="nav-item" data-tab="analytics"><span class="nav-ic" data-ic="chart"></span><span class="nav-lbl">Analytics</span></button>
+      <button class="nav-item" data-tab="activity"><span class="nav-ic" data-ic="pulse"></span><span class="nav-lbl">Activity</span><span class="nav-dot" id="navActivityDot" hidden></span></button>
+      <button class="nav-item" data-tab="logs"><span class="nav-ic" data-ic="log"></span><span class="nav-lbl">Logs</span><span class="nav-dot" id="navLogDot" hidden></span></button>
+      <button class="nav-item" data-tab="settings"><span class="nav-ic" data-ic="gear"></span><span class="nav-lbl">Settings</span></button>
+    </nav>
+
+    <div class="side-sec">
+      <div class="side-label">Quick filters</div>
+      <button class="side-filter" data-quick="favorites"><span class="sf-ic">★</span><span class="sf-lbl">Favorites</span><b id="qfFav">0</b></button>
+      <button class="side-filter" data-quick="running"><span class="sf-ic">◉</span><span class="sf-lbl">Running</span><b id="qfRun">0</b></button>
+      <button class="side-filter" data-quick="missing"><span class="sf-ic">⚠</span><span class="sf-lbl">Missing</span><b id="qfMiss">0</b></button>
+    </div>
+
+    <div class="side-sec tags-sec">
+      <div class="side-label">Tags <span class="label-hint" id="tagHint">none yet</span></div>
+      <div class="tag-cloud" id="tagCloud"></div>
+    </div>
+
+    <div class="side-foot">
+      <div class="theme-row">
+        <button class="round-btn" data-act="theme-prev" title="Previous theme">‹</button>
+        <button class="theme-current" data-act="theme-menu" title="Choose theme">
+          <span class="theme-dot" id="themeDot"></span><span id="themeName">—</span>
+        </button>
+        <button class="round-btn" data-act="theme-next" title="Next theme">›</button>
+      </div>
+      <div class="sys-mini" title="Live system memory">
+        <div class="sys-mini-top"><span>RAM</span><span id="sysRamVal">—</span></div>
+        <div class="meter"><i id="sysRamBar"></i></div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="main-scroll" id="mainScroll">
+
+      <!-- ═══ LIBRARY ═══ -->
+      <section class="view" data-view="library">
+        <header class="view-head">
+          <div class="title-block">
+            <h1 id="viewTitle">Library</h1>
+            <p id="viewSub">Loading your projects…</p>
+          </div>
+          <div class="head-actions">
+            <div class="seg" id="viewSeg" role="group" aria-label="View mode">
+              <button data-view-mode="list" class="on">List</button>
+              <button data-view-mode="grid">Grid</button>
+            </div>
+            <button class="btn ghost icon-only" data-act="density-cycle" title="Cycle density">▤</button>
+            <div class="add-wrap">
+              <button class="btn primary" data-act="add-menu"><span class="plus">＋</span> Add</button>
+            </div>
+          </div>
+        </header>
+
+        <div class="toolbar">
+          <div class="search-wrap">
+            <svg class="s-ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+            <input id="searchInput" type="text" placeholder="Filter by name, path, tag…" spellcheck="false" autocomplete="off">
+            <button class="s-clear" data-act="clear-search" title="Clear" hidden>✕</button>
+            <kbd class="s-kbd">/</kbd>
+          </div>
+          <div class="type-chips" id="typeChips"></div>
+          <div class="heat-legend" id="heatLegend" hidden></div>
+          <div class="toolbar-right">
+            <button class="chip-btn" data-act="sort-menu"><span>Sort</span><b id="sortLabel">Custom</b><span class="dir" id="sortDir">↑</span></button>
+            <button class="chip-btn" data-act="group-menu"><span>Group</span><b id="groupLabel">None</b></button>
+            <button class="chip-btn icon-only" data-act="refresh-specs" title="Refresh file specs">⟳</button>
+          </div>
+        </div>
+
+        <div class="quick-bar" id="quickBar" hidden>
+          <span class="qb-label">Active filters</span>
+          <div id="quickChips" class="qb-chips"></div>
+          <button class="qb-clear" data-act="clear-filters">Clear all</button>
+        </div>
+
+        <div class="lib-scroll" id="libScroll">
+          <div id="libList" class="lib-list" role="list"></div>
+          <div id="libEmpty" class="empty" hidden>
+            <div class="empty-orb">◇</div>
+            <h2 id="emptyTitle">Nothing here yet</h2>
+            <p id="emptyBody">Add a file or folder to start launching projects from one place.</p>
+            <div class="empty-actions">
+              <button class="btn primary" data-act="add-file">Add a file</button>
+              <button class="btn ghost" data-act="add-folder">Add a folder</button>
+              <button class="btn ghost" data-act="scan">Scan a folder</button>
+            </div>
+            <p class="empty-hint">Tip: drop files or folders anywhere in this window.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ ANALYTICS ═══ -->
+      <section class="view" data-view="analytics" hidden>
+        <header class="view-head">
+          <div class="title-block">
+            <h1>Analytics</h1>
+            <p>Usage, health and live system signal across your library.</p>
+          </div>
+          <div class="head-actions">
+            <button class="btn ghost" data-act="reset-stats">Reset counters</button>
+          </div>
+        </header>
+
+        <div class="kpi-grid" id="kpis"></div>
+
+        <div class="panel-grid">
+          <section class="panel chart-panel span-2">
+            <div class="panel-head">
+              <div><h3>Launch activity</h3><p>Last 14 days</p></div>
+              <div class="legend"><span class="lg lg-a"></span>launches</div>
+            </div>
+            <div class="chart-wrap"><canvas id="chartDays" height="190"></canvas><div class="chart-tip" id="chartTip" hidden></div><div class="chart-empty" id="chartEmpty" hidden>No launches recorded in the last 14 days</div></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head"><div><h3>Library mix</h3><p>By type</p></div></div>
+            <div class="donut-wrap"><canvas id="chartTypes" width="190" height="190"></canvas><div class="donut-legend" id="typeLegend"></div></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head"><div><h3>Most launched</h3><p>Last 30 days</p></div></div>
+            <div class="rank-list" id="topProjects"></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head"><div><h3>Hourly rhythm</h3><p>Launches by hour, last 30 days</p></div></div>
+            <div class="heat-strip" id="hourStrip"></div>
+            <div class="heat-axis"><span>00</span><span>06</span><span>12</span><span>18</span><span>23</span></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head"><div><h3>System</h3><p>Live</p></div><span class="live-pill"><i></i>live</span></div>
+            <div class="sys-rows" id="sysPanel"></div>
+          </section>
+        </div>
+      </section>
+
+      <!-- ═══ ACTIVITY ═══ -->
+      <section class="view" data-view="activity" hidden>
+        <header class="view-head">
+          <div class="title-block">
+            <h1>Activity</h1>
+            <p>A timeline of everything Nexus did for you.</p>
+          </div>
+          <div class="head-actions">
+            <button class="btn ghost" data-act="clear-activity">Clear timeline</button>
+          </div>
+        </header>
+        <div class="filter-row" id="activityFilters"></div>
+        <div class="timeline" id="activityList"></div>
+      </section>
+
+      <!-- ═══ LOGS ═══ -->
+      <section class="view" data-view="logs" hidden>
+        <header class="view-head">
+          <div class="title-block">
+            <h1>Logs</h1>
+            <p>stdout and stderr from every app you launch — captured here instead of in extra windows.</p>
+          </div>
+          <div class="head-actions">
+            <button class="btn ghost" data-act="log-open-dir">Log folder</button>
+            <button class="btn ghost" data-act="log-export">Export…</button>
+            <button class="btn ghost" data-act="log-clear">Clear</button>
+          </div>
+        </header>
+
+        <div class="log-toolbar">
+          <div class="log-field">
+            <label for="logAppFilter">App</label>
+            <select id="logAppFilter"><option value="all">All apps</option></select>
+          </div>
+          <div class="log-field">
+            <label for="logStreamFilter">Stream</label>
+            <select id="logStreamFilter">
+              <option value="all">Everything</option>
+              <option value="out">stdout</option>
+              <option value="err">stderr</option>
+              <option value="sys">lifecycle</option>
+            </select>
+          </div>
+          <div class="log-field grow">
+            <label for="logSearch">Find</label>
+            <input id="logSearch" type="text" placeholder="Filter lines…" spellcheck="false" autocomplete="off">
+          </div>
+          <div class="log-toggles">
+            <button class="log-toggle on" data-log-toggle="follow" title="Keep the newest line in view">Follow</button>
+            <button class="log-toggle" data-log-toggle="wrap" title="Wrap long lines">Wrap</button>
+            <span class="log-count" id="logCount">0 lines</span>
+          </div>
+        </div>
+
+        <div class="log-console" id="logConsole">
+          <div class="log-empty" id="logEmpty">Nothing captured yet — launch an app and its output lands here.</div>
+          <div class="log-rows" id="logRows"></div>
+        </div>
+      </section>
+
+      <!-- ═══ SETTINGS ═══ -->
+      <section class="view" data-view="settings" hidden>
+        <header class="view-head">
+          <div class="title-block">
+            <h1>Settings</h1>
+            <p>Every control is live, granular and saved automatically.</p>
+          </div>
+          <div class="head-actions">
+            <span class="save-pill" id="savePill">All changes saved</span>
+          </div>
+        </header>
+        <div class="settings-layout">
+          <nav class="settings-nav" id="settingsNav">
+            <button class="set-nav active" data-section="appearance"><span>◐</span>Appearance</button>
+            <button class="set-nav" data-section="layout"><span>▥</span>Layout</button>
+            <button class="set-nav" data-section="cards"><span>▦</span>Cards</button>
+            <button class="set-nav" data-section="behavior"><span>⚙</span>Behavior</button>
+            <button class="set-nav" data-section="launch"><span>▶</span>Launching</button>
+            <button class="set-nav" data-section="performance"><span>◔</span>Performance</button>
+            <button class="set-nav" data-section="shortcuts"><span>⌨</span>Shortcuts</button>
+            <button class="set-nav" data-section="storage"><span>▤</span>Storage</button>
+            <button class="set-nav" data-section="about"><span>◆</span>About</button>
+          </nav>
+          <div class="settings-body" id="settingsBody"></div>
+        </div>
+      </section>
+
+    </div>
+
+    <footer class="statusbar">
+      <div class="sb-left"><span class="sb-dot" id="sbDot"></span><span id="sbStatus">Ready</span></div>
+      <div class="sb-mid" id="sbHint">Ctrl+K for commands · / to filter</div>
+      <div class="sb-right">
+        <span id="sbProjects">0 projects</span><span class="sb-sep"></span>
+        <span id="sbRuns">0 runs</span><span class="sb-sep"></span>
+        <span id="sbMemory">RAM —</span>
+      </div>
+    </footer>
+  </main>
+
+  <aside class="inspector" id="inspector" aria-hidden="true">
+    <div class="insp-inner">
+      <header class="insp-head">
+        <div class="insp-heading"><span class="insp-kicker">Inspector</span><span class="insp-sub" id="inspSub">—</span></div>
+        <div class="insp-head-actions">
+          <button class="icon-btn" data-act="dup-project" title="Duplicate">⧉</button>
+          <button class="icon-btn" data-act="close-inspector" title="Close (Esc)">✕</button>
+        </div>
+      </header>
+      <div class="insp-body" id="inspBody"></div>
+    </div>
+  </aside>
+</div>
+
+<!-- overlays -->
+<div class="palette-overlay" id="paletteOverlay" hidden>
+  <div class="palette" role="dialog" aria-label="Command palette">
+    <div class="palette-input">
+      <span class="pi-ic">⌘</span>
+      <input id="paletteInput" type="text" placeholder="Type a command, project or tag…" spellcheck="false" autocomplete="off">
+      <kbd>Esc</kbd>
+    </div>
+    <div class="palette-results" id="paletteResults"></div>
+    <div class="palette-foot"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> run</span><span><kbd>Ctrl K</kbd> toggle</span></div>
+  </div>
+</div>
+
+<div class="add-popover" id="addPopover" hidden>
+  <button data-act="add-file"><span class="ap-ic">◈</span><span><b>Add file</b><i>Scripts, apps, documents</i></span></button>
+  <button data-act="add-folder"><span class="ap-ic">▤</span><span><b>Add folder</b><i>Project root directory</i></span></button>
+  <button data-act="scan"><span class="ap-ic">⌕</span><span><b>Scan folder</b><i>Import every subfolder</i></span></button>
+  <div class="ap-sep"></div>
+  <button data-act="paste-path"><span class="ap-ic">⌘</span><span><b>Paste path</b><i>From clipboard</i></span></button>
+</div>
+
+<div class="batch-bar" id="batchBar" hidden>
+  <span class="bb-count"><b id="bbCount">0</b> selected</span>
+  <div class="bb-actions">
+    <button data-act="batch-run">▶ Run</button>
+    <button data-act="batch-fav">★ Favorite</button>
+    <button data-act="batch-tag"># Tag</button>
+    <button data-act="batch-stop">■ Stop</button>
+    <button class="danger" data-act="batch-delete">Remove</button>
+  </div>
+  <button class="bb-close" data-act="batch-clear" title="Clear selection">✕</button>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<div class="ctx-menu" id="ctxMenu" hidden></div>
+<div class="modal-overlay" id="modal" hidden><div class="modal" role="dialog"><h3 id="modalTitle">Confirm</h3><p id="modalBody"></p><div class="modal-actions"><button class="btn ghost" id="modalCancel" data-act="modal-cancel">Cancel</button><button class="btn danger" id="modalConfirm">Confirm</button></div></div></div>
+<div class="perf-hud" id="perfHud" hidden></div>
+<div class="dropzone" id="dropOverlay" hidden><div class="dz-inner"><div class="dz-orb">↓</div><h2>Drop to add</h2><p>Files and folders become projects</p></div></div>
+
+<div class="help-overlay" id="help" hidden>
+  <div class="help-card">
+    <header class="help-head"><span class="help-title">◆ Keyboard map</span><button class="icon-btn" data-act="help-close">✕</button></header>
+    <div class="help-grid" id="helpGrid"></div>
+    <footer class="help-foot">Granular controls · keyed rendering · content-visibility · GPU-only motion</footer>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
