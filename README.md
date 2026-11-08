@@ -19,7 +19,7 @@
 <br/>
 
 <p align="center">
-  <img src="docs/01-library.png" width="820" alt="Library — list view with inspector" />
+  <img src="docs/demo-screenshot.png" width="820" alt="Project Nexus v5 — Library view" />
 </p>
 
 ---
@@ -57,10 +57,6 @@ Every surface is a frosted-glass panel with live blur, ambient glow, film grain,
 
 ### 📊 Analytics Dashboard
 
-<p align="center">
-  <img src="docs/02-analytics.png" width="820" alt="Analytics dashboard" />
-</p>
-
 - **KPI row** — projects, last-7-day launches, all-time runs, running-now, favorites, missing
 - **14-day launch activity** bar chart
 - **Library mix** donut chart (by project type)
@@ -69,10 +65,6 @@ Every surface is a frosted-glass panel with live blur, ambient glow, film grain,
 - **Live system monitor** — CPU %, RAM (used / total), Nexus footprint, child process count, uptime
 
 ### 🔍 Inspector
-
-<p align="center">
-  <img src="docs/03-inspector.png" width="820" alt="Inspector panel" />
-</p>
 
 - Slide-out detail panel for the selected project
 - Edit name, description, tags (color-coded swatches), target path, shell command, arguments
@@ -85,15 +77,7 @@ Every surface is a frosted-glass panel with live blur, ambient glow, film grain,
 
 `Ctrl+K` opens a fuzzy-search overlay merging commands and projects — arrow keys to navigate, Enter to run.
 
-<p align="center">
-  <img src="docs/05-command-palette.png" width="600" alt="Command palette" />
-</p>
-
 ### 📋 Activity & Logs
-
-<p align="center">
-  <img src="docs/07-activity.png" width="820" alt="Activity feed" />
-</p>
 
 - Timestamped activity feed for every launch, stop, and config change
 - Captured **stdout / stderr** log viewer with per-project scoping
@@ -118,10 +102,6 @@ Every surface is a frosted-glass panel with live blur, ambient glow, film grain,
 | 6 | Dracula Style | Dark | 13 | Forest Green | Dark |
 | 7 | Rose Pine | Dark | 14 | **Porcelain** | **Light** |
 
-<p align="center">
-  <img src="docs/04-settings-appearance.png" width="820" alt="Theme & appearance settings" />
-</p>
-
 ---
 
 ## Granular Appearance Controls
@@ -143,10 +123,6 @@ Every visual parameter is a live slider, saved automatically:
 ---
 
 ## Cards & Heat Map
-
-<p align="center">
-  <img src="docs/20-cards-heat.png" width="820" alt="Card grid with heat accents" />
-</p>
 
 The grid view tints each card by launch frequency — green → amber → red:
 
@@ -266,34 +242,6 @@ npm run smoke        # artifacts in .smoke/fresh/ and .smoke/reload/
 | IPC | `contextBridge` + `ipcRenderer.invoke` — 30+ typed channels |
 | Config | JSON deep-merge with schema migration |
 | Lines of code | ~5 400 (hand-written JS/CSS/HTML) |
-
----
-
-## More Screenshots
-
-<details>
-<summary><strong>Card settings panel</strong></summary>
-<br/>
-<img src="docs/21-cards-settings.png" width="820" alt="Card settings" />
-</details>
-
-<details>
-<summary><strong>Settings — cards with fixed layout</strong></summary>
-<br/>
-<img src="docs/22-settings-cards-fixed.png" width="820" alt="Settings cards fixed" />
-</details>
-
-<details>
-<summary><strong>Log viewer</strong></summary>
-<br/>
-<img src="docs/08-logs.png" width="820" alt="Log viewer" />
-</details>
-
-<details>
-<summary><strong>Narrow / responsive window</strong></summary>
-<br/>
-<img src="docs/06-narrow-window.png" width="820" alt="Narrow window layout" />
-</details>
 
 ---
 

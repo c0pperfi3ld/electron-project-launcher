@@ -29,3 +29,6 @@ Desktop.ini
 *~
 .vscode/
 .idea/
+docs/*.png
+docs/*.json
+!docs/demo-screenshot.png
